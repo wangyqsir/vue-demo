@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import CompontntA from '@/components/CompontntA'
+// import HelloWorld from '@/pages/home/HelloWorld'
+import HomeIndex from '@/pages/home/Home'
+import BasicLearn from '@/pages/basicLearn/index'
 
 Vue.use(Router)
 
@@ -9,13 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'HomeIndex',
+      component: HomeIndex
     },
     {
-      path: '/A',
-      name: 'CompontntA',
-      component: CompontntA
+      path: '/basic',
+      name: 'BasicLearn',
+      component: BasicLearn
     }
   ]
 })

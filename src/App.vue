@@ -1,13 +1,27 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <el-container>
+      <el-header>Header</el-header>
+      <el-container>
+        <el-aside width="200px"><side-bar></side-bar></el-aside>
+        <el-container>
+          <el-main>
+            <router-view/>
+          </el-main>
+          <el-footer>Footer</el-footer>
+        </el-container>
+      </el-container>
+    </el-container>
+
   </div>
 </template>
 
 <script>
+import './assets/css/element-variables.scss'
+import SideBar from '@/components/sidebar'
 export default {
   name: 'App',
+  components:{SideBar}
   // components: {BaseButton}
 }
 </script>
@@ -19,6 +33,39 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.el-header, .el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  text-align: center;
+}
+
+.el-aside {
+  background-color: #D3DCE6;
+  color: #333;
+  text-align: center;
+}
+
+.el-main {
+  background-color: #E9EEF3;
+  color: #333;
+  text-align: center;
+}
+html,body{
+  padding: 0;
+  margin: 0;
+}
+#app > .el-container {
+  /*margin-bottom: 40px;*/
+  min-height: 100vh;
+}
+
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+  line-height: 260px;
+}
+
+.el-container:nth-child(7) .el-aside {
+  line-height: 320px;
 }
 </style>
