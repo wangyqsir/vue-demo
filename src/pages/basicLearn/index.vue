@@ -314,7 +314,36 @@
       </div>
 
     </el-tab-pane>
-
+    <el-tab-pane label="事件" name="ten">
+      <h2>事件</h2>
+      <h3>基础</h3>
+      <div class="demo-box">
+        <p>事件名一律用kebab-case：监听触发需相同</p>
+      </div>
+      <h3>组建上的v-modal</h3>
+      <div class="demo-box">
+      <p>一个组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件，但是像单选框、复选框等类型的输入控件可能会将 value 特性用于不同的目的。model 选项可以用来避免这样的冲突</p>
+        <sub-component-b v-model="ten.lovingVue"></sub-component-b>
+        <br/>
+        值：{{ten.lovingVue}}
+      </div>
+      <h3>原生事件绑定在组件根元素 .native (没生效)</h3>
+      <div class="demo-box">
+        <sub-component-c :label="ten.label" v-model="ten.value" v-on:focus="onFocus"></sub-component-c>
+        {{ten.value}}
+      </div>
+      <h3>.sync 的使用</h3>
+      <div class="demo-box">
+        <p>基本使用</p>
+        <sub-component-d :activeName.sync="ten.label"></sub-component-d>
+        activeName:{{ten.label}}
+        <p>使用对象</p>
+          <sub-component-d v-bind.sync="second"></sub-component-d>
+            href:{{second.href}}
+          <br/>
+        <!--label:{{ten.obj.label}};value:{{ten.obj.value}}-->
+      </div>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -322,13 +351,20 @@
 import Vue from 'vue'
 import ElTabPane from "element-ui/packages/tabs/src/tab-pane";
 import SubComponent from "@/components/subComponent";
+import SubComponentB from "@/components/subComponentB";
+import SubComponentC from "@/components/subComponentC";
+import SubComponentD from "@/components/subComponentD";
 
 //自定义事件修饰符
 Vue.config.keyCodes.f1 = 112
 export default {
   components: {
     SubComponent,
-    ElTabPane},
+    ElTabPane,
+    SubComponentB,
+    SubComponentC,
+    SubComponentD
+  },
   data() {
     return {
       activeName: 'first',
@@ -402,6 +438,15 @@ export default {
             title:'按钮名称'
           }
         }
+      },
+      ten:{
+        lovingVue:true,
+        label:'请输入：',
+        value:'',
+        obj:{
+          label:'lala',
+          value:''
+        }
       }
     };
   },
@@ -461,6 +506,9 @@ export default {
     },
     formSubCompont(msg){
       alert(msg)
+    },
+    onFocus(msg){
+      console.log('触发了')
     }
   }
 };
