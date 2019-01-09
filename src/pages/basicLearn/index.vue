@@ -487,7 +487,7 @@ export default {
       this.six.items=this.six.items.concat([{message:'新数组的类'}])
     },
     changeArrayValue(){
-      Vue.set(this.six.items,0,{message:'修改后的值'})
+      this.$set(this.six.items,0,{message:'修改后的值'})
     },
     addObjValue(){
       // Vue.set(this.six.object,'phone','13551391607');
