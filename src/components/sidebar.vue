@@ -44,6 +44,14 @@
             </router-link>
           </template>
         </el-menu-item>
+        <el-menu-item index="5">
+          <template slot="title">
+            <router-link :to="{ name: 'vue-learn'}">
+              <i class="el-icon-setting"></i>
+              <span>状态管理</span>
+            </router-link>
+          </template>
+        </el-menu-item>
       </el-menu>
     </el-col>
   </el-row>

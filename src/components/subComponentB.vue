@@ -1,6 +1,8 @@
 <template>
     <div>
       <input type="checkbox" :checked="checked" @change="$emit('change', $event.target.checked)">
+
+      <p>来自路由的参数，通过prop传递：{{id}}</p>
     </div>
 </template>
 
@@ -12,7 +14,8 @@ export default {
       event: 'change'
     },
     props:{
-      checked:Boolean
+      checked:Boolean,
+      id:String
     }
 }
 </script>

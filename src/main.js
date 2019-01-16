@@ -4,6 +4,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
+import store from './store/store'
 import ElementUi from 'element-ui'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
@@ -41,10 +43,13 @@ requireComponent.keys().forEach(fileName => {
   )
 })
 
+Vue.prototype.$axios = axios
+
 Vue.use(ElementUi)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

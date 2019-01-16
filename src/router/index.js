@@ -5,6 +5,8 @@ import HomeIndex from '@/pages/home/Home'
 import BasicLearn from '@/pages/basicLearn/index'
 import RouterPage from '@/pages/router/RouterPage'
 import SubComponentD from '@/components/subComponentD'
+import SubComponentB from '@/components/subComponentB'
+import vuePage from '@/pages/vuexLearn/vuexComponent'
 
 Vue.use(Router)
 
@@ -22,13 +24,19 @@ export default new Router({
     },{
       path:'/router/:id',
       name:'RouterPage',
-      component:RouterPage,
+      components:{default:RouterPage,b:SubComponentB},
+      props: { default: false, b: true },
       children:[
         {
           path:'subrouter',
           component:SubComponentD
         }
       ]
+    },
+    {
+      path: '/vuex',
+      name: 'vue-learn',
+      component: vuePage
     }
   ]
 })
